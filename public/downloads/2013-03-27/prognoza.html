@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="pl" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  <title>Prognoza
+</title>
+</head>
+<body>
+<header>
+</header>
+<div class="container">
+<h1>Strony, które jeszcze nie płacą</h1>
+<h2>Kliknij na nagłówek, aby sortować</h2>
+<div class="container">
+
+<table id="tosort" class="sorted table">
+<thead>
+<tr>
+<th>Strona</th><th>Data rozpoczęcia płatności</th><th>Kwota z tego miesiąca</th>
+<th>Kwota z ostatnich 31 dni</th>
+</tr>
+</thead>
+<tr>    
+      <td>studiodicarte.eu</td>
+      <td>2013-05-26</td>
+      <td>0</td>
+      <td>0</td>
+  </tr>
+</table>
+
+</div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+<script src="../js/jqtablesorter.js"></script>
+<script src="../js/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $("#tosort").tablesorter(); 
+  $('#noresults').tablesorter();
+}); 
+</script>
+</body>
+</html>

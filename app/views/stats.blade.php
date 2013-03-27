@@ -23,11 +23,14 @@ Statystyki
           <td>{{ $site->site_url }}</td>
           <td>{{ $topResult['intt'] }}</td>
           <td>{{ $topResult['all'] }}</td>
+          @if ( $topResult['all'] == 0)
+          <td>0/0</td>
+          @else 
           <td> {{ $topResult['intt'] / $topResult['all']}} </td>
+          @endif
         </tr>
       @endforeach
       </table>
     </div>
   </div>
 </div>
-@stop
