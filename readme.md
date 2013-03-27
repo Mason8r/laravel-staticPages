@@ -11,3 +11,7 @@
 ### License
 
 The Laravel framework is open-sourced software license under the [MIT license](http://opensource.org/licenses/MIT)
+
+### Dependencies
+
+I am using here great library [Carbon](https://github.com/briannesbitt/Carbon)
