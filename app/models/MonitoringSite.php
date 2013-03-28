@@ -47,7 +47,8 @@ class MonitoringSite extends Eloquent {
     	foreach ($ignoredSitesIds as $id) {
     		$iids[] = $id->site_id;
     	}
-    	$sites = MonitoringSite::join('monitoring_users', 'monitoring_sites.site_user_id', '=', 'monitoring_users.user_id')
+    	$sites = MonitoringSite::join('monitoring_users', 'monitoring_sites.site_user_id', 
+        '=', 'monitoring_users.user_id')
     	->where('monitoring_users.start_payment', '<', $today)
     	->whereNotIn('site_id', $iids)
     	->get();
@@ -73,15 +74,22 @@ class MonitoringSite extends Eloquent {
 	
       $siteId = $this->site_id;
       
-      $results = DB::select("SELECT h.position, c.cost, h.year, h.month
-		FROM monitoring_history h
-		LEFT JOIN monitoring_cost c ON h.key_id = c.key_id
-      	WHERE h.site_id = '$siteId'
-      	AND	
+      $results = DB::select("
+        SELECT 
+          h.position, c.cost, h.year, h.month
+		  FROM 
+        monitoring_history h
+		  LEFT JOIN 
+        monitoring_cost c 
+      ON 
+        h.key_id = c.key_id
+      WHERE 
+        h.site_id = '$siteId'
+      AND	
       	h.position
-		BETWEEN c.from
-		AND c.to
-		AND
+		      BETWEEN 
+            c.from AND c.to
+		  AND
       	h.data BETWEEN '$since' AND '$today'
       	");
       
@@ -109,7 +117,9 @@ class MonitoringSite extends Eloquent {
         	AND 
         		data = '$yesterday'
         	AND 
-        		h.position BETWEEN 1 AND 10
+        		h.position 
+              BETWEEN 
+                1 AND 10
         		");
         $keywordsInTopTen = intval($results[0]->count);
         
